@@ -44,7 +44,7 @@ void DefaultConverter::on_configure()
   diag_updater_ = std::make_shared<diagnostic_updater::Updater>(node);
   diag_updater_->setHardwareID(node->get_name());
 
-  publisher_locations_ = node->create_publisher<sensor_msgs::msg::PointCloud2>("~/locations", 10);
+  publisher_locations_ = node->create_publisher<sensor_msgs::msg::PointCloud2>("~/locations", rclcpp::SensorDataQoS());
   publisher_locations_header_ =
     node->create_publisher<off_highway_premium_radar_sample_msgs::msg::LocationDataHeader>(
     "~/locations_header", 10);
